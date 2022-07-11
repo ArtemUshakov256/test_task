@@ -1,6 +1,10 @@
 import requests
 from bs4 import BeautifulSoup
 import csv
+import logging
+
+
+logging.basicConfig(level=logging.INFO)
 
 
 query = input("Введите поисковой запрос\n")
@@ -36,8 +40,8 @@ try:
         price_form = price_list[-1].text
         price = price_form[:-2] + ", " + price_form[-2:]
         data.append([name, trade_mark, city, price])
-except Exception:
-    print("[ERROR] Something went wrong! Check your query and try again")
+except Exception as e:
+    logging.error(e)
 
 
 with open("goods_data.csv", "w", encoding="cp1251") as file:
