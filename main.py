@@ -41,6 +41,6 @@ except Exception:
 
 
 with open("goods_data.csv", "w", encoding="cp1251") as file:
-    writer = csv.writer(file, delimiter=",")
+    writer = csv.writer(file, delimiter=",", quotechar='"', quoting=csv.QUOTE_ALL)
     for info in data:
         writer.writerow(info)
